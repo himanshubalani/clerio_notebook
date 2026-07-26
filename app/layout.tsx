@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, IBM_Plex_Sans, Manrope } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const manropeHeading = Manrope({subsets:['latin'],variable:'--font-heading'});
+
+const ibmPlexSans = IBM_Plex_Sans({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", ibmPlexSans.variable, manropeHeading.variable)}
     >
       <body className="min-h-full flex flex-col"><ClerkProvider>
           <header className="flex justify-end items-center p-4 gap-4 h-16">
