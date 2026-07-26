@@ -126,8 +126,8 @@ export function ChatMessages({
         {messages.map((message) => {
           const rawText = message.parts
             .filter((p) => p.type === "text")
-            // @ts-expect-error ai sdk parts type
-            .map((p) => p.text)
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .map((p) => (p as any).text as string)
             .join("");
 
           const hasCitations = CITATION_REGEX.test(rawText);

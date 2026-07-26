@@ -349,6 +349,8 @@ export function SidebarMenuButton({
   );
 
   if (render) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const renderProps = (render.props as any) ?? {};
     return React.cloneElement(render, {
       className: cn(
         "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md px-2 text-left text-sm outline-none transition-colors",
@@ -357,12 +359,12 @@ export function SidebarMenuButton({
         "group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0",
         size === "lg" ? "h-10" : "h-8",
         isActive && "bg-sidebar-accent font-medium text-sidebar-accent-foreground",
-        render.props.className,
+        renderProps.className,
         className
       ),
       "data-active": isActive,
-      children: render.props.children ?? children,
-    });
+      children: renderProps.children ?? children,
+    } as React.HTMLAttributes<HTMLElement>);
   }
 
   return buttonContent;
@@ -389,10 +391,12 @@ export function SidebarMenuAction({
   );
 
   if (render) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const renderProps = (render.props as any) ?? {};
     return React.cloneElement(render, {
-      className: cn(classes, render.props.className),
-      children: render.props.children ?? children,
-    });
+      className: cn(classes, renderProps.className),
+      children: renderProps.children ?? children,
+    } as React.HTMLAttributes<HTMLElement>);
   }
 
   return (

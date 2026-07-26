@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import {
   PlusIcon,
   FileTextIcon,
-  YoutubeIcon,
+  PlayCircleIcon,
   GlobeIcon,
   FileIcon,
   Loader2Icon,
@@ -30,7 +30,7 @@ import { cn } from "@/lib/utils";
 
 const SOURCE_TYPE_ICONS: Record<string, React.ElementType> = {
   pdf: FileTextIcon,
-  youtube: YoutubeIcon,
+  youtube: PlayCircleIcon,
   website: GlobeIcon,
   text: FileIcon,
   vtt: FileTextIcon,
@@ -238,7 +238,7 @@ function AddSourceDialog({ conversationId, onClose }: AddSourceDialogProps) {
       {activeTab === "youtube" && (
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2 rounded-lg border bg-background px-3 py-2">
-            <YoutubeIcon className="size-4 text-red-500 shrink-0" />
+            <PlayCircleIcon className="size-4 text-red-500 shrink-0" />
             <input
               type="url"
               placeholder="https://youtube.com/watch?v=..."

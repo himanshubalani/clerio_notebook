@@ -53,8 +53,8 @@ export async function POST(req: Request) {
     message.role === "user"
       ? message.parts
           .filter((p) => p.type === "text")
-          // @ts-expect-error ai sdk parts typing
-          .map((p) => p.text as string)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .map((p) => (p as any).text as string)
           .join("")
       : "";
 

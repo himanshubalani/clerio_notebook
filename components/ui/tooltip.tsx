@@ -18,7 +18,6 @@ function Tooltip({
     <TooltipPrimitive.Root
       open={open}
       onOpenChange={onOpenChange}
-      delay={300}
       {...props}
     >
       {children}

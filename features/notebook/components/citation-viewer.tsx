@@ -92,7 +92,6 @@ export function CitationViewer({
           <Button
             variant="outline"
             size="sm"
-            asChild
           >
             <a
               href={citation.sourceName}
