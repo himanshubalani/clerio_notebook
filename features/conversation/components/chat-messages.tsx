@@ -113,7 +113,7 @@ export function ChatMessages({
       try {
         const newId = await createBranch(conversationId, messageId);
         toast.success("Timeline branched!");
-        router.push(`/c/${newId}`);
+        router.push(`/app/app/c/${newId}`);
       } catch (err) {
         toast.error(`Failed to create branch - ${err}`);
       }

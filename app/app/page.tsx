@@ -1,8 +1,10 @@
 import { ConversationView } from "@/features/conversation/components/conversation-view";
 import { generateId } from "ai";
 
+/**
+ * New notebook page — generates a temporary ID until the first message is sent.
+ */
 const NewNotebookPage = async () => {
-  // Generate a temporary ID — not saved until first message is sent
   const id = generateId();
 
   return (

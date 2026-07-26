@@ -68,8 +68,8 @@ export const ConversationView = ({
 
   // Seamlessly update URL once messages start without re-mounting
   React.useEffect(() => {
-    if (pathname === "/" && messages.length > 0) {
-      window.history.replaceState(null, "", `/c/${conversationId}`);
+    if (pathname === "/app" && messages.length > 0) {
+      window.history.replaceState(null, "", `/app/c/${conversationId}`);
     }
   }, [messages.length, pathname, conversationId]);
 
@@ -115,7 +115,7 @@ export const ConversationView = ({
                 {relatedBranches.map((branch) => (
                   <DropdownMenuItem key={branch.id}>
                     <Link
-                      href={`/c/${branch.id}`}
+                      href={`/app/c/${branch.id}`}
                       className="flex items-center justify-between w-full"
                     >
                       <span className="truncate">{branch.title}</span>

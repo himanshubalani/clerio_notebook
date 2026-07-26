@@ -4,13 +4,13 @@ import { AppSidebar } from "@/features/conversation/components/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 /**
- * App shell with collapsible sidebar and main content area for notebook views.
+ * Full-viewport shell: collapsible notebook sidebar + main content area.
  */
 export function ChatShell({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider>
+    <SidebarProvider className="h-full">
       <AppSidebar />
-      <SidebarInset className="min-h-svh overflow-hidden">
+      <SidebarInset className="h-full overflow-hidden">
         {children}
       </SidebarInset>
     </SidebarProvider>

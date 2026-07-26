@@ -44,7 +44,7 @@ export function SidebarProvider({
     >
       <div
         data-sidebar-provider=""
-        className={cn("flex min-h-svh w-full", className)}
+        className={cn("flex h-full w-full", className)}
         style={
           {
             "--sidebar-width": "16rem",
@@ -158,7 +158,7 @@ export function SidebarInset({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <main
-      className={cn("relative flex flex-1 flex-col overflow-hidden", className)}
+      className={cn("relative flex h-full flex-1 flex-col overflow-hidden", className)}
       {...props}
     />
   );

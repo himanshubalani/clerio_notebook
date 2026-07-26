@@ -29,7 +29,7 @@ export function useCreateConversation() {
       void queryClient.invalidateQueries({
         queryKey: queryKeys.conversations.all,
       });
-      router.push(`/c/${conversation.id}`);
+      router.push(`/app/c/${conversation.id}`);
     },
     onError: (error: Error) => {
       toast.error(error.message || "Could not create notebook");
@@ -79,7 +79,7 @@ export function useDeleteConversation(activeId?: string) {
       });
 
       if (activeId === id) {
-        router.push("/");
+        router.push("/app");
       }
 
       toast.success("Notebook deleted");

@@ -9,7 +9,7 @@ type ConversationPageProps = {
 };
 
 /**
- * Conversation page — loads messages and renders the 3-pane notebook UI.
+ * Existing notebook page — loads message history and renders the 3-pane UI.
  */
 const ConversationPage = async ({ params }: ConversationPageProps) => {
   const { id } = await params;

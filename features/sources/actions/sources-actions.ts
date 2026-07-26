@@ -75,7 +75,7 @@ export async function createSource(
     },
   });
 
-  revalidatePath(`/c/${conversationId}`);
+  revalidatePath(`/app/c/${conversationId}`);
   return source;
 }
 
@@ -104,6 +104,6 @@ export async function deleteSource(sourceId: string): Promise<{ id: string }> {
   }
 
   await prisma.source.delete({ where: { id: sourceId } });
-  revalidatePath(`/c/${existing.conversationId}`);
+  revalidatePath(`/app/c/${existing.conversationId}`);
   return { id: sourceId };
 }

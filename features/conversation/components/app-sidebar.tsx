@@ -51,8 +51,8 @@ export function AppSidebar() {
   const pathname = usePathname();
   const { data: conversations, isLoading } = useConversations();
 
-  const activeId = pathname.startsWith("/c/")
-    ? pathname.split("/")[2]
+  const activeId = pathname.startsWith("/app/c/")
+    ? pathname.split("/")[3]
     : undefined;
 
   return (
@@ -63,7 +63,7 @@ export function AppSidebar() {
             <SidebarMenuButton
               size="lg"
               className="font-semibold tracking-tight"
-              render={<Link href="/" />}
+              render={<Link href="/app" />}
             >
               <span className="flex size-8 items-center justify-center rounded-md bg-primary/10">
                 <BookOpenIcon className="size-4 text-primary" />
@@ -74,7 +74,7 @@ export function AppSidebar() {
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip="New notebook" render={<Link href="/" />}>
+            <SidebarMenuButton tooltip="New notebook" render={<Link href="/app" />}>
               <PlusIcon />
               <span>New Notebook</span>
             </SidebarMenuButton>
@@ -170,7 +170,7 @@ function ChatItem({
       <SidebarMenuButton
         isActive={isActive}
         tooltip={conversation.title}
-        render={<Link href={`/c/${conversation.id}`} />}
+        render={<Link href={`/app/c/${conversation.id}`} />}
         className={cn(isActive && "font-medium")}
       >
         <span className="truncate">{conversation.title}</span>

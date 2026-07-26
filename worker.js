@@ -1,29 +1,22 @@
 import { Worker } from "bullmq";
-import { connection } from "./lib/queue.js";
+import { connection } from "./lib/rag/queue.js";
 import { INDEXING_QUEUE, QUERY_QUEUE } from "./lib/config.js";
-import { indexPdf } from "./lib/indexer.js";
+import { processSourceIndexing } from "./lib/indexer.js";
 import { answerQuery } from "./lib/retriever.js";
 
-// Worker that consumes indexing jobs enqueued by the /index route and runs the
-// pipeline: parse PDF -> chunk -> embed (OpenAI) -> upsert into Qdrant.
+// Worker that routes all jobs to the universal indexer
 const indexingWorker = new Worker(
   INDEXING_QUEUE,
   async (job) => {
     console.log(`📥 Indexing job ${job.id}: ${job.data.originalName}`);
-
-    const result = await indexPdf({
-      filePath: job.data.filePath,
-      originalName: job.data.originalName,
-    });
-
-    console.log(`   → ${result.chunks} chunk(s) indexed`);
+    const result = await processSourceIndexing(job.data);
+    console.log(`   → ${result.chunks} chunk(s) indexed successfully`);
     return result;
   },
   { connection, concurrency: 2 }
 );
 
-// Worker that consumes query jobs enqueued by the /query route and runs the
-// RAG pipeline: embed query -> search Qdrant -> generate an answer.
+// RAG pipeline worker
 const queryWorker = new Worker(
   QUERY_QUEUE,
   async (job) => {

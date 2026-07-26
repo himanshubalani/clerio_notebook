@@ -7,7 +7,7 @@ import React from "react";
  * Authenticated app layout — protects routes, syncs user to DB,
  * and wraps content in the notebook ChatShell.
  */
-const RootGroupLayout = async ({
+const AppGroupLayout = async ({
   children,
 }: {
   children: React.ReactNode;
@@ -16,10 +16,10 @@ const RootGroupLayout = async ({
   await onBoard();
 
   return (
-    <ChatShell>
-      {children}
-    </ChatShell>
+    <div className="flex h-full flex-col">
+      <ChatShell>{children}</ChatShell>
+    </div>
   );
 };
 
-export default RootGroupLayout;
+export default AppGroupLayout;
